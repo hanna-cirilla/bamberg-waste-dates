@@ -3,10 +3,12 @@ import * as cheerio from 'cheerio';
 import { Cookie } from 'tough-cookie';
 import type { RequestHandler } from './$types';
 
-export const GET: RequestHandler = async ({ fetch }) => {
-	const straße = '';
-	const hausnummer = '';
-	const hausnummerzusatz = '';
+export const GET: RequestHandler = async ({ fetch, url }) => {
+	const straße = url.searchParams.get('straße') || '';
+	const hausnummer = url.searchParams.get('hausnummer') || '';
+	const hausnummerzusatz = url.searchParams.get('hausnummerzusatz') || '';
+
+	console.log(`Fetching dates for ${straße} ${hausnummer}${hausnummerzusatz}`);
 
 	const cookie = await retrieveCookie(fetch);
 	const response = await getDates(straße, hausnummer, hausnummerzusatz, cookie!, fetch);
