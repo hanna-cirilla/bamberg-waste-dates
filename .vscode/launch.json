@@ -1,0 +1,21 @@
+{
+	"compounds": [],
+	"configurations": [
+		{
+			"experimentalNetworking": "off",
+			"name": "Launch via PNPM",
+			"request": "launch",
+			"runtimeArgs": ["run", "dev"],
+			"runtimeExecutable": "pnpm",
+			"serverReadyAction": {
+				"action": "debugWithEdge",
+				"killOnServerStop": true,
+				"pattern": "Local:\\s*http://localhost:(\\d+)",
+				"webRoot": "${workspaceFolder}"
+			},
+			"skipFiles": ["<node_internals>/**"],
+			"type": "node"
+		}
+	],
+	"version": "0.2.0"
+}
